@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Role-Base Authentication" Class="DataLinQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-K7KKQB30;Initial Catalog=&quot;Role-Base Authentication&quot;;Persist Security Info=True;User ID=sa" SettingsObjectName="Authentication.Properties.Settings" SettingsPropertyName="Role_Base_AuthenticationConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Permissions" Member="Permissions">
+    <Type Name="Permission">
+      <Column Name="Permission_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Permission_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Permission_RolePermission" Member="RolePermissions" ThisKey="Permission_ID" OtherKey="Permission_ID" Type="RolePermission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="Role_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Role_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Role_RolePermission" Member="RolePermissions" ThisKey="Role_ID" OtherKey="Role_ID" Type="RolePermission" />
+      <Association Name="Role_UserRole" Member="UserRoles" ThisKey="Role_ID" OtherKey="Role_ID" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RolePermission" Member="RolePermissions">
+    <Type Name="RolePermission">
+      <Column Name="RolePer_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Permission_ID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Role_ID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RolePer_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="RolePermission_ApplicationRole" Member="ApplicationRoles" ThisKey="RolePer_ID" OtherKey="RolePer_ID" Type="ApplicationRole" />
+      <Association Name="Permission_RolePermission" Member="Permission" ThisKey="Permission_ID" OtherKey="Permission_ID" Type="Permission" IsForeignKey="true" />
+      <Association Name="Role_RolePermission" Member="Role" ThisKey="Role_ID" OtherKey="Role_ID" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserAuthentication" Member="UserAuthentications">
+    <Type Name="UserAuthentication">
+      <Column Name="UserAuthen_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserAuthen_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserAuthen_Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="UserAuthentication_UserRole" Member="UserRoles" ThisKey="UserAuthen_ID" OtherKey="UserAuthen_ID" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRole" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="UserRole_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Role_ID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UserAuthen_ID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UserRole_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Role_UserRole" Member="Role" ThisKey="Role_ID" OtherKey="Role_ID" Type="Role" IsForeignKey="true" />
+      <Association Name="UserAuthentication_UserRole" Member="UserAuthentication" ThisKey="UserAuthen_ID" OtherKey="UserAuthen_ID" Type="UserAuthentication" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationRole" Member="ApplicationRoles">
+    <Type Name="ApplicationRole">
+      <Column Name="AppRole_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AppMenu_ID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RolePer_ID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AppRole_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AppRole_Des" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="RolePermission_ApplicationRole" Member="RolePermission" ThisKey="RolePer_ID" OtherKey="RolePer_ID" Type="RolePermission" IsForeignKey="true" />
+      <Association Name="ApplicationMenu_ApplicationRole" Member="ApplicationMenu" ThisKey="AppMenu_ID" OtherKey="AppMenu_ID" Type="ApplicationMenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Applicationss" Member="Applicationsses">
+    <Type Name="Applicationss">
+      <Column Name="Application_Code" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Application_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Application_URL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Application_Des" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Application_Status" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Applicationss_ApplicationMenu" Member="ApplicationMenus" ThisKey="Application_Code" OtherKey="Application_Code" Type="ApplicationMenu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationMenu" Member="ApplicationMenus">
+    <Type Name="ApplicationMenu">
+      <Column Name="AppMenu_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AppMenu_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Application_Code" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="ApplicationMenu_ApplicationRole" Member="ApplicationRoles" ThisKey="AppMenu_ID" OtherKey="AppMenu_ID" Type="ApplicationRole" />
+      <Association Name="Applicationss_ApplicationMenu" Member="Applicationss" ThisKey="Application_Code" OtherKey="Application_Code" Type="Applicationss" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
