@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace Authentication
 {
@@ -52,71 +54,147 @@ namespace Authentication
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             //DataSet ds1 = new DataSet();
-            ////MessageBox.Show(gridMovies.Rows.Count.ToString());
-            //if (e.RowIndex == -1)
-            //{
-            //    return;
-            //}
-            //if (e.RowIndex == dataGridView1.Rows.Count - 1)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    dataGridView1.Rows[e.RowIndex].Selected = true;
-            //    //ดึงจาก datatable
-            //    DataRow dr = ds1.Tables["Product"].Rows[e.RowIndex];
-            //    labelCode.Text = dr["ProductID"].ToString();
-            //    textBoxName.Text = dr["ProductName"].ToString();
-            //    textBoxPrice.Text = dr["ProductPrice"].ToString();
+            
+            //MessageBox.Show(gridMovies.Rows.Count.ToString());
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            if (e.RowIndex == dataGridView1.Rows.Count - 1)
+            {
+                return;
+            }
+            else
+            {
 
-            //    textCost.Text = dr["ProductCost"].ToString();
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+                //ดึงจาก datatable
+                //DataRow dr = ds1.Tables["Product"].Rows[e.RowIndex];
+                labelCode.Text = "Code :"+dataGridView1.SelectedCells[0].Value.ToString();
+                labelCode.Text +="\n"+"Name :"+ dataGridView1.SelectedCells[1].Value.ToString();
+                if (dataGridView1.SelectedCells[2].Value.ToString().Length < 30)
+                {
+                    labelCode.Text += "\n" + "URL :" + dataGridView1.SelectedCells[2].Value.ToString();
 
-
-
-            //    textBoxLong.Text = dr["ProductDet"].ToString();
-            //    textBoxInsurance.Text = dr["ProductInsurance"].ToString();
-            //    //MessageBox.Show(dr["Mov_Pic"].ToString());
-
-            //    string sql = "SELECT ProductPic FROM Product Where ProductID =" + dr["ProductID"].ToString() + "";
-            //    if (conn.State != ConnectionState.Open)
-            //        conn.Open();
-
-            //    command = new SqlCommand(sql, conn);
-
-            //    SqlDataReader reader = command.ExecuteReader();
-            //    reader.Read();
-
-            //    if (reader.HasRows)
-            //    {
-            //        if (dr["ProductPic"].ToString() != "")
-            //        {
-
-            //            byte[] img = (byte[])(reader[0]);
-
-            //            if (img == null)
-            //            {
-            //                pictureBox1.Image = null;
-            //            }
-            //            else
-            //            {
-
-            //                MemoryStream ms = new MemoryStream(img);
-            //                pictureBox1.Image = Image.FromStream(ms);
-            //            }
-            //        }
+                }
+                else
+                {
 
 
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("This is does not exits");
-            //    }
-            //    conn.Close();
+                    string a = dataGridView1.SelectedCells[2].Value.ToString();
+                    string newa = a.Substring(0, 30);
+                    if (a.Substring(30).Length < 30)
+                    {
+                        newa += "\n" + a.Substring(30);
+                    }
+                    else
+                    {
+                        int la = a.Substring(30).Length / 30;
+                        //int last = a.Substring(30).Length % 30;
+                        //if(last != 0)
+                        //{
+                        //    la =la + 1;
+                        //}
+                        for (int i = 0; i < la; i++)
+                        {
+
+                            newa += "\n" + a.Substring(30 * (i + 1), 30);
+                            if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30*(i+2)).Length !=0)
+                            {
+                                newa += "\n" + a.Substring(30 * (i + 2));
+                            }
+                        }
+                    }
+                    labelCode.Text += "\n" + "URL :" + newa;
 
 
-            //}
+
+                }
+
+                //labelCode.Text += "\n"+"Description :"+ dataGridView1.SelectedCells[3].Value.ToString();
+                if (dataGridView1.SelectedCells[3].Value.ToString().Length < 30)
+                {
+                    labelCode.Text += "\n" + "Description :" + dataGridView1.SelectedCells[3].Value.ToString();
+
+                }
+                else
+                {
+
+
+                    string a = dataGridView1.SelectedCells[3].Value.ToString();
+                    string newa = a.Substring(0, 30);
+                    if (a.Substring(30).Length < 30)
+                    {
+                        newa+="\n"+a.Substring(30);
+                    }
+                    else
+                    {
+                        int la = a.Substring(30).Length / 30;
+                        //int last = a.Substring(30).Length % 30;
+                        //if(last != 0)
+                        //{
+                        //    la =la + 1;
+                        //}
+                        for(int i = 0; i < la; i++)
+                        {
+
+                            newa += "\n" + a.Substring(30 * (i + 1),30);
+                            if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30 * (i + 2)).Length != 0)
+                            {
+                                newa += "\n" + a.Substring(30 * (i + 2));
+                            }
+                        }
+                    }
+                    labelCode.Text += "\n" + "Description :" + newa;
+                    
+
+
+                }
+
+
+                labelCode.Text +="\n"+"Status :"+ dataGridView1.SelectedCells[4].Value.ToString();
+                //MessageBox.Show(dr["Mov_Pic"].ToString());
+
+                //string sql = "SELECT ProductPic FROM Product Where ProductID =" + dr["ProductID"].ToString() + "";
+                //if (conn.State != ConnectionState.Open)
+                //    conn.Open();
+
+                //command = new SqlCommand(sql, conn);
+
+                //SqlDataReader reader = command.ExecuteReader();
+                //reader.Read();
+
+                //if (reader.HasRows)
+                //{
+                //    if (dr["ProductPic"].ToString() != "")
+                //    {
+
+                //        byte[] img = (byte[])(reader[0]);
+
+                //        if (img == null)
+                //        {
+                //            pictureBox1.Image = null;
+                //        }
+                //        else
+                //        {
+
+                //            MemoryStream ms = new MemoryStream(img);
+                //            pictureBox1.Image = Image.FromStream(ms);
+                //        }
+                //    }
+
+
+                //}
+                //else
+                //{
+                //    MessageBox.Show("This is does not exits");
+                //}
+                //conn.Close();
+
+
+            }
 
         }
     }

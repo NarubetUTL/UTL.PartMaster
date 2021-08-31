@@ -36,11 +36,7 @@
             this.tabPageAppPro = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.labelCode = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -136,61 +132,22 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.labelCode);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(947, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(429, 630);
             this.panel2.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 260);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Status";
-            // 
             // labelCode
             // 
             this.labelCode.AutoSize = true;
+            this.labelCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCode.Location = new System.Drawing.Point(14, 34);
             this.labelCode.Name = "labelCode";
-            this.labelCode.Size = new System.Drawing.Size(45, 17);
+            this.labelCode.Size = new System.Drawing.Size(66, 25);
             this.labelCode.TabIndex = 0;
             this.labelCode.Text = "Code:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 201);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Description";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Name";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 156);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "URL";
             // 
             // tableLayoutPanel3
             // 
@@ -447,10 +404,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonSetStat;
         private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelCode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         public System.Windows.Forms.DataGridView dataGridView1;
