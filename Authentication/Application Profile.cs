@@ -27,10 +27,11 @@ namespace Authentication
 
         public void Application_Profile_Load(object sender, EventArgs e)
         {
-            var d = new DataLinQDataContext();
-            var AppAll = from Applicationss in d.Applicationsses  select new { AppCode=Applicationss.Application_Code,AppName=Applicationss.Application_Name,URL=Applicationss.Application_URL,Description=Applicationss.Application_Des,Status=Applicationss.Application_Status } ;
-            dataGridView1.DataSource = AppAll;
-
+            using (var d = new Entities())
+            {
+                var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
+                dataGridView1.DataSource = AppAll.ToList();
+            }
             //ribbonTabaccess.Pressed=true;
         }
 
@@ -41,9 +42,11 @@ namespace Authentication
             //MessageBox.Show(value.ToString());
             if (value.ToString() == "Cancel")
             {
-                var d = new DataLinQDataContext();
-                var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
-                dataGridView1.DataSource = AppAll;
+                using (var d = new Entities())
+                {
+                    var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
+                    dataGridView1.DataSource = AppAll.ToList();
+                }
             }
         }
 

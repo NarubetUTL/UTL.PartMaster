@@ -26,22 +26,24 @@ namespace Authentication
         {
             try
             {
-                var d = new DataLinQDataContext();
-                Applicationss AppIn = new Applicationss();
+                using (var d = new Entities())
+                {
+                    Applicationss AppIn = new Applicationss();
 
-
-                AppIn.Application_Name = textBoxAppName.Text;
-                AppIn.Application_Code = textBoxAppCode.Text;
-                AppIn.Application_URL = textBoxURL.Text;
-                AppIn.Application_Des = textBoxDes.Text;
-                AppIn.Application_Status = "Active";
-                d.Applicationsses.InsertOnSubmit(AppIn);
-                d.SubmitChanges();
-                MessageBox.Show("Create Success");
-                //var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
-                //Application_Profile AP = new Application_Profile();
-                //App.dataGridView1.DataSource = AppAll;
-                this.Close();
+                     
+                    AppIn.Application_Name = textBoxAppName.Text;
+                    AppIn.Application_Code = textBoxAppCode.Text;
+                    AppIn.Application_URL = textBoxURL.Text;
+                    AppIn.Application_Des = textBoxDes.Text;
+                    AppIn.Application_Status = "Active";
+                    d.Applicationsses.Add(AppIn);
+                    d.SaveChanges();
+                    MessageBox.Show("Create Success");
+                    //var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
+                    //Application_Profile AP = new Application_Profile();
+                    //App.dataGridView1.DataSource = AppAll;
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

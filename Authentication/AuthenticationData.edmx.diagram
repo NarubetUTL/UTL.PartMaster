@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df1c38979a794d55a18e158eed8ca161" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="MasterDataModel.ApplicationMenu" Width="1.5" PointX="4.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.ApplicationRole" Width="1.5" PointX="2.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.Applicationss" Width="1.5" PointX="7.125" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.Permission" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.Role" Width="1.5" PointX="4.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.RolePermission" Width="1.5" PointX="2.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.UserAuthentication" Width="1.5" PointX="7.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterDataModel.UserRole" Width="1.5" PointX="4.875" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="MasterDataModel.FK_ApplicationMenu_Applicationss1" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterDataModel.FK_ApplicationRole_ApplicationMenu1" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterDataModel.FK_ApplicationRole_RolePermission" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterDataModel.FK_RolePermission_Permission1" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterDataModel.FK_RolePermission_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterDataModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterDataModel.FK_UserRole_UserAuthentication" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -13,6 +13,21 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +53,8 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Scaffolding.EntityFramework.12.0, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Data.Entity.Design.Extensibility, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -45,10 +62,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -75,16 +93,35 @@
     <Compile Include="Application Profile.Designer.cs">
       <DependentUpon>Application Profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationMenu.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationRole.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Applicationss.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticationData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthenticationData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticationData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticationData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthenticationData.edmx</DependentUpon>
+    </Compile>
     <Compile Include="CreateAppPro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateAppPro.Designer.cs">
       <DependentUpon>CreateAppPro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataLinQ.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataLinQ.dbml</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -104,8 +141,26 @@
     <Compile Include="PartMaster.Designer.cs">
       <DependentUpon>PartMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RolePermission.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAuthentication.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>AuthenticationData.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AccessControl.resx">
       <DependentUpon>AccessControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,13 +189,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataLinQ.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataLinQ.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataLinQ.dbml.layout">
-      <DependentUpon>DataLinQ.dbml</DependentUpon>
+    <EntityDeploy Include="AuthenticationData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AuthenticationData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AuthenticationData.edmx.diagram">
+      <DependentUpon>AuthenticationData.edmx</DependentUpon>
     </None>
     <None Include="dll\ClosedXML.0.95.4\.signature.p7s" />
     <None Include="dll\ClosedXML.0.95.4\ClosedXML.0.95.4.nupkg" />
@@ -218,11 +272,22 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AuthenticationData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AuthenticationData.edmx</DependentUpon>
+      <LastGenOutput>AuthenticationData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AuthenticationData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AuthenticationData.edmx</DependentUpon>
+      <LastGenOutput>AuthenticationData.cs</LastGenOutput>
+    </Content>
     <Content Include="dll\ClosedXML.0.95.4\lib\net40\ClosedXML.dll" />
     <Content Include="dll\ClosedXML.0.95.4\lib\net40\ClosedXML.pdb" />
     <Content Include="dll\ClosedXML.0.95.4\lib\net40\ClosedXML.xml" />
@@ -362,6 +427,9 @@
     <PackageReference Include="DocumentFormat.OpenXml">
       <Version>2.7.2</Version>
     </PackageReference>
+    <PackageReference Include="EntityFramework">
+      <Version>6.4.4</Version>
+    </PackageReference>
     <PackageReference Include="ExcelDataReader">
       <Version>3.6.0</Version>
     </PackageReference>
@@ -381,11 +449,23 @@
       <Version>5.0.1.1</Version>
     </PackageReference>
     <PackageReference Include="System.IO.FileSystem.Primitives">
-      <Version>4.0.1</Version>
+      <Version>4.3.0</Version>
     </PackageReference>
     <PackageReference Include="System.IO.Packaging">
-      <Version>4.0.0</Version>
+      <Version>5.0.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
