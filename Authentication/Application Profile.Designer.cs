@@ -44,7 +44,7 @@
             this.buttonSetStat = new System.Windows.Forms.Button();
             this.buttonAPserch = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAPPCreate = new System.Windows.Forms.Button();
             this.tabPageAppMenu = new System.Windows.Forms.TabPage();
@@ -184,6 +184,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(932, 600);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tableLayoutPanel1
@@ -206,7 +207,7 @@
             this.panel1.Controls.Add(this.buttonSetStat);
             this.panel1.Controls.Add(this.buttonAPserch);
             this.panel1.Controls.Add(this.buttonEdit);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxSearch);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -223,6 +224,7 @@
             this.buttonSetStat.TabIndex = 0;
             this.buttonSetStat.Text = "Set Status";
             this.buttonSetStat.UseVisualStyleBackColor = true;
+            this.buttonSetStat.Click += new System.EventHandler(this.buttonSetStat_Click);
             // 
             // buttonAPserch
             // 
@@ -232,6 +234,7 @@
             this.buttonAPserch.TabIndex = 2;
             this.buttonAPserch.Text = "Search";
             this.buttonAPserch.UseVisualStyleBackColor = true;
+            this.buttonAPserch.Click += new System.EventHandler(this.buttonAPserch_Click);
             // 
             // buttonEdit
             // 
@@ -242,22 +245,23 @@
             this.buttonEdit.TabIndex = 0;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // textBox1
+            // textBoxSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(59, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(706, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBoxSearch.Location = new System.Drawing.Point(59, 16);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(706, 22);
+            this.textBoxSearch.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 19);
+            this.label1.Location = new System.Drawing.Point(3, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Content";
             // 
             // buttonAPPCreate
             // 
@@ -398,7 +402,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonAPserch;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAPPCreate;
         private System.Windows.Forms.Panel panel2;

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MasterDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MasterDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicationMenu">
           <Key>
             <PropertyRef Name="AppMenu_ID" />
@@ -29,8 +29,8 @@
           </Key>
           <Property Name="Application_Code" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Application_Name" Type="varchar" MaxLength="50" />
-          <Property Name="Application_URL" Type="varchar" MaxLength="50" />
-          <Property Name="Application_Des" Type="varchar" MaxLength="50" />
+          <Property Name="Application_URL" Type="varchar" MaxLength="100" />
+          <Property Name="Application_Des" Type="varchar" MaxLength="100" />
           <Property Name="Application_Status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Permissions">
@@ -207,8 +207,7 @@
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MasterDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -240,8 +239,8 @@
           </Key>
           <Property Name="Application_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Application_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Application_URL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Application_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Application_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Application_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Application_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ApplicationMenus" Relationship="Self.FK_ApplicationMenu_Applicationss1" FromRole="Applicationss" ToRole="ApplicationMenu" />
         </EntityType>

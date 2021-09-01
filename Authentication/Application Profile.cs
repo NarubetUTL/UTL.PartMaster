@@ -18,7 +18,6 @@ namespace Authentication
         {
             InitializeComponent();
         }
-        
 
         private void Application_Profile_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -40,7 +39,7 @@ namespace Authentication
         private void buttonAPPCreate_Click(object sender, EventArgs e)
         {
             CreateAppPro CAP = new CreateAppPro();
-            var value=CAP.ShowDialog();
+            var value = CAP.ShowDialog();
             //MessageBox.Show(value.ToString());
             if (value.ToString() == "Cancel")
             {
@@ -54,26 +53,26 @@ namespace Authentication
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             //DataSet ds1 = new DataSet();
-            
+
             //MessageBox.Show(gridMovies.Rows.Count.ToString());
-            if (e.RowIndex == -1)
+            if (e.RowIndex == -1)
             {
                 return;
             }
-            if (e.RowIndex == dataGridView1.Rows.Count - 1)
-            {
-                return;
-            }
+            //if (e.RowIndex == dataGridView1.Rows.Count - 1)
+            //{
+            //    return;
+            //}
             else
             {
 
                 dataGridView1.Rows[e.RowIndex].Selected = true;
                 //ดึงจาก datatable
                 //DataRow dr = ds1.Tables["Product"].Rows[e.RowIndex];
-                labelCode.Text = "Code :"+dataGridView1.SelectedCells[0].Value.ToString();
-                labelCode.Text +="\n"+"Name :"+ dataGridView1.SelectedCells[1].Value.ToString();
+                labelCode.Text = "Code :" + dataGridView1.SelectedCells[0].Value.ToString();
+                labelCode.Text += "\n" + "Name :" + dataGridView1.SelectedCells[1].Value.ToString();
                 if (dataGridView1.SelectedCells[2].Value.ToString().Length < 30)
                 {
                     labelCode.Text += "\n" + "URL :" + dataGridView1.SelectedCells[2].Value.ToString();
@@ -101,7 +100,7 @@ namespace Authentication
                         {
 
                             newa += "\n" + a.Substring(30 * (i + 1), 30);
-                            if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30*(i+2)).Length !=0)
+                            if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30 * (i + 2)).Length != 0)
                             {
                                 newa += "\n" + a.Substring(30 * (i + 2));
                             }
@@ -127,7 +126,7 @@ namespace Authentication
                     string newa = a.Substring(0, 30);
                     if (a.Substring(30).Length < 30)
                     {
-                        newa+="\n"+a.Substring(30);
+                        newa += "\n" + a.Substring(30);
                     }
                     else
                     {
@@ -137,10 +136,10 @@ namespace Authentication
                         //{
                         //    la =la + 1;
                         //}
-                        for(int i = 0; i < la; i++)
+                        for (int i = 0; i < la; i++)
                         {
 
-                            newa += "\n" + a.Substring(30 * (i + 1),30);
+                            newa += "\n" + a.Substring(30 * (i + 1), 30);
                             if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30 * (i + 2)).Length != 0)
                             {
                                 newa += "\n" + a.Substring(30 * (i + 2));
@@ -148,13 +147,13 @@ namespace Authentication
                         }
                     }
                     labelCode.Text += "\n" + "Description :" + newa;
-                    
+
 
 
                 }
 
 
-                labelCode.Text +="\n"+"Status :"+ dataGridView1.SelectedCells[4].Value.ToString();
+                labelCode.Text += "\n" + "Status :" + dataGridView1.SelectedCells[4].Value.ToString();
                 //MessageBox.Show(dr["Mov_Pic"].ToString());
 
                 //string sql = "SELECT ProductPic FROM Product Where ProductID =" + dr["ProductID"].ToString() + "";
@@ -195,6 +194,168 @@ namespace Authentication
 
 
             }
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            //if (e.RowIndex == dataGridView1.Rows.Count - 1)
+            //{
+            //    return;
+            //}
+            else
+            {
+
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+               
+                labelCode.Text = "Code :" + dataGridView1.SelectedCells[0].Value.ToString();
+                labelCode.Text += "\n" + "Name :" + dataGridView1.SelectedCells[1].Value.ToString();
+                if (dataGridView1.SelectedCells[2].Value.ToString().Length < 30 && dataGridView1.SelectedCells[2].Value.ToString() != null)
+                {
+                    if(dataGridView1.SelectedCells[2].Value == null)
+                    {
+                        labelCode.Text += "\n" + "URL :";
+                    }
+                    else
+                    {
+                        labelCode.Text += "\n" + "URL :" + dataGridView1.SelectedCells[2].Value.ToString();
+
+                    }
+
+                }
+                else
+                {
+
+
+                    string a = dataGridView1.SelectedCells[2].Value.ToString();
+                    string newa = a.Substring(0, 30);
+                    if (a.Substring(30).Length < 30)
+                    {
+                        newa += "\n" + a.Substring(30);
+                    }
+                    else
+                    {
+                        int la = a.Substring(30).Length / 30;
+                        
+                        for (int i = 0; i < la; i++)
+                        {
+
+                            newa += "\n" + a.Substring(30 * (i + 1), 30);
+                            if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30 * (i + 2)).Length != 0)
+                            {
+                                newa += "\n" + a.Substring(30 * (i + 2));
+                            }
+                        }
+                    }
+                    labelCode.Text += "\n" + "URL :" + newa;
+
+
+
+                }
+
+                if (dataGridView1.SelectedCells[3].Value.ToString().Length < 30)
+                {
+                    labelCode.Text += "\n" + "Description :" + dataGridView1.SelectedCells[3].Value.ToString();
+
+                }
+                else
+                {
+
+
+                    string a = dataGridView1.SelectedCells[3].Value.ToString();
+                    string newa = a.Substring(0, 30);
+                    if (a.Substring(30).Length < 30)
+                    {
+                        newa += "\n" + a.Substring(30);
+                    }
+                    else
+                    {
+                        int la = a.Substring(30).Length / 30;
+                        
+                        for (int i = 0; i < la; i++)
+                        {
+
+                            newa += "\n" + a.Substring(30 * (i + 1), 30);
+                            if (a.Substring(30 * (i + 2)).Length < 30 && a.Substring(30 * (i + 2)).Length != 0)
+                            {
+                                newa += "\n" + a.Substring(30 * (i + 2));
+                            }
+                        }
+                    }
+                    labelCode.Text += "\n" + "Description :" + newa;
+
+
+
+                }
+
+
+                labelCode.Text += "\n" + "Status :" + dataGridView1.SelectedCells[4].Value.ToString();
+            }
+        }
+
+        private void buttonSetStat_Click(object sender, EventArgs e)
+        {
+
+            using (var d = new Entities())
+            {
+                var seq = dataGridView1.SelectedCells[0].Value.ToString();
+                var update = d.Applicationsses.Where(o => (o.Application_Code == seq)).FirstOrDefault();
+                if (update != null)
+                {
+                    //MessageBox.Show(update.Application_Status);
+                    if (update.Application_Status.ToString() == "Active")
+                    {
+
+
+                        update.Application_Status = "Inactive";
+                    }
+                    else
+                    {
+
+                        update.Application_Status = "Active";
+                    }
+                    
+                        d.SaveChanges();
+                    
+                    MessageBox.Show("Status Changed");
+                }
+
+
+
+
+
+                var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
+            dataGridView1.DataSource = AppAll.ToList();
+          
+                }
+            
+            
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            EditAppPro CAP = new EditAppPro();
+            CAP.labelCode.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            var value = CAP.ShowDialog();
+            
+
+            //MessageBox.Show(value.ToString());
+            if (value.ToString() == "Cancel")
+            {
+                using (var d = new Entities())
+                {
+                    var AppAll = from Applicationss in d.Applicationsses select new { AppCode = Applicationss.Application_Code, AppName = Applicationss.Application_Name, URL = Applicationss.Application_URL, Description = Applicationss.Application_Des, Status = Applicationss.Application_Status };
+                    dataGridView1.DataSource = AppAll.ToList();
+                }
+            }
+        }
+
+        private void buttonAPserch_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -123,6 +123,12 @@
     <Compile Include="CreateAppPro.Designer.cs">
       <DependentUpon>CreateAppPro.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditAppPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAppPro.Designer.cs">
+      <DependentUpon>EditAppPro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAppPro.resx">
       <DependentUpon>CreateAppPro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAppPro.resx">
+      <DependentUpon>EditAppPro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
